@@ -22,7 +22,7 @@ Right click the processing system, go to Peripheral I/O Pins, navigate to UART1 
 
 Generate the bitstream, go for a walk, and once it's done, click File - Export Hardware. Make sure to select the option to include the bitstream:
 
-![export hardware](rsrc/4_export_hdl.png)
+![export hardware](rsrc/4_exporthdl.png)
 
 This will create a file with an "XSA" extension.
 
