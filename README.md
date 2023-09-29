@@ -2,7 +2,7 @@
 
 ## Overview
 
-This page documents some notes for using Zynq devices. The notes are tested against Digilent, using a mix of Vivado 2022/2023.
+This page documents some notes for using Zynq devices. The notes are tested against Digilent Zybo + Eclypse boards, using a mix of Vivado 2022/2023 - check your board schematic before you push your bitstream.
 
 ## Notes
 
@@ -26,7 +26,7 @@ Generate the bitstream, go for a walk, and once it's done, click File - Export H
 
 This will create a file with an "XSA" extension.
 
-Now, run the "Vitis" application. Make sure you are running Xilinx Vitis 2022. Make sure you're running "Xilinx Vitis", and not the completely different "Vitis", it should open into something like this:
+Now, run the "Vitis" application. On Windows, make sure you're running "Xilinx Vitis", and not the completely different "Vitis", it should open into something like this:
 
 ![vitis](rsrc/5_vitis.png)
 
