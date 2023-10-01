@@ -41,11 +41,9 @@ Select the "Package IP" tab, and select "Review and Package" on the left:
 
 ![package IP](rsrc/AXIPS_packageIP.png)
 
-Click "Re-package IP" and then close the project.
+Click "Re-package IP" and then move back to the original project.
 
-Delete the original custom IP and add it in your block diagram. (TODO: can I refresh this somehow instead of delete and re-add?). Run connection automation to stick it on the AXI bus.
-
-![new block diagram!](rsrc/AXIPS_newbd.png)
+Go to the TCL console, and run upgrade\_ip [get\_ips \*]. (Q: Is there a GUI option for this?) 
 
 Leave the new block - run Synthesis and implementation on the new block, open the implemented design and assign a port to `ext_led`
 
