@@ -28,7 +28,7 @@ Right click the IP in the block diagram, and select "Edit in IP Packager". This 
 	    begin
 	      r_out <= 1;
 	    end
-	  else
+	  else if ( slv_reg1 == 32'd54321 )
 	    begin
 	      r_out <= 0;
 	    end
@@ -86,7 +86,17 @@ clean:
 	rm -rf ${OUTS}
 ```
 
+*Protip: xil_printf.h is missing?*
+
 You'll need to clean this shit out of *all* the makefiles, so navigate to your workspace directory (can't find it, because Vitis likes abstraction? Just open one of the Makefiles in your System Editor and hit Save As). Find the other affected Makefiles with `Get-ChildItem -Recurse * | Select-String -Pattern "pongpong" | Select-Object -Unique Path`, and edit the others.
+
+You need to remove \*.c and \*.o, and replace them with actual filenames. Not sure why?
+
+*Protip: xil_printf.h still missing?*
+
+Sometimes, Vitis will initialize your project with a nonexistent include directory. Check the C/C++ settings for your project. Alternatively, just delete the entire Vitis workspace.
+
+At least it's not as bad as the ST Visual Develop debacle.
 
 Create your C application (Q: does MMIO work here?):
 
@@ -96,16 +106,17 @@ Create your C application (Q: does MMIO work here?):
 #include "xil_printf.h"
 #include "xil_io.h"
 
+#define BASEADDR 0x43c00004
+
 int main()
 {
     init_platform();
-    uint32_t *baseAddr = (uint32_t *)0x43c00000;
 
     while(1)
     {
-    	Xil_Out32(baseAddr,12345);
+    	Xil_Out32(BASEADDR,12345);
     	sleep(2);
-    	Xil_Out32(baseAddr,54321);
+    	Xil_Out32(BASEADDR,54321);
     	sleep(2);
     }
     print("Hello World\n\r");
